@@ -2,11 +2,16 @@ import numpy as np
 from .activations import Softmax
 
 class LinearLayer:
-    def __init__(self, input_size, output_size, learning_rate=0.01):
+    def __init__(self, input_size, output_size, learning_rate=0.01, momentum=0.9):
         limit = np.sqrt(6 / (input_size + output_size))
         self.weights = np.random.uniform(-limit, limit, (input_size, output_size))
         self.bias = np.zeros((1, output_size))
         self.lr = learning_rate
+        self.momentum = momentum
+        
+        # Estados para o Otimizador Momentum (iniciam em zero)
+        self.v_w = np.zeros_like(self.weights)
+        self.v_b = np.zeros_like(self.bias)
 
     def forward(self, input_data):
         self.input = input_data
@@ -17,9 +22,13 @@ class LinearLayer:
         grad_bias = np.sum(grad_output, axis=0, keepdims=True)
         grad_input = np.dot(grad_output, self.weights.T)
         
-        # A atualização dos pesos (SGD) está acoplada aqui na sua implementação
-        self.weights -= self.lr * grad_weights
-        self.bias -= self.lr * grad_bias
+        # Fórmulas do Momentum: v = momentum * v + lr * grad
+        self.v_w = self.momentum * self.v_w + self.lr * grad_weights
+        self.v_b = self.momentum * self.v_b + self.lr * grad_bias
+        
+        # Atualização dos parâmetros usando a velocidade acumulada
+        self.weights -= self.v_w
+        self.bias -= self.v_b
         
         return grad_input
 
