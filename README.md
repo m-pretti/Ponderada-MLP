@@ -40,6 +40,7 @@ O modelo foi validado e avaliado utilizando o dataset **MNIST** (caracteres manu
 ├── requirements.txt     # Gerenciamento de dependências do projeto
 ├── .gitignore           # Filtro para ignorar arquivos de cache e locais
 └── README.md            # Documentação do projeto
+```
 
 ## Resultados e Análises Técnicas
 
