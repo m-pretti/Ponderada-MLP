@@ -35,7 +35,7 @@ O modelo foi validado e avaliado utilizando o dataset **MNIST** (caracteres manu
 │   ├── matriz_confusao.png
 │   ├── ativacoes_internas.png
 │   └── embeddings_pca_do_zero.png
-├── Ponderada_MLP.ipynb  # Notebook principal de treino e validação
+├── experimentos.ipynb  # Notebook principal de treino e validação
 ├── test_mlp.py          # Suíte de testes unitários automatizados
 ├── requirements.txt     # Gerenciamento de dependências do projeto
 ├── .gitignore           # Filtro para ignorar arquivos de cache e locais
