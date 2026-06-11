@@ -148,7 +148,7 @@ pip install -r requirements.txt
 2. Para explorar o treinamento, os experimentos visuais e a geração dos gráficos de resultados, abra e execute as células do arquivo localizado na raiz:
 
 ```text
-Ponderada_MLP.ipynb
+experimentos.ipynb
 
 ```
 
